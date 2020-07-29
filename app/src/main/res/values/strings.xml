@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">MiniTwitter</string>
+    <string name="e_mail_hint">E-mail</string>
+    <string name="password_hint">Password</string>
+    <string name="iniciar_seccion_text">iniciar seccion</string>
+    <string name="create_account_hint">Si no tienes cuenta, <u>registrate aqui.</u></string>
+    <string name="username_hint">Username</string>
+    <string name="crear_cuenta_text">Crear cuenta</string>
+    <string name="title_activity_dash_board">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_prueba">PruebaActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="response_error">Algo ha ido mal</string>
+    <string name="conection_error">Error de conexión, inténtelo de nuevo.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tweet_msj_hint">¿Qué está pasando?</string>
+    <string name="tweet_button">Twittear</string>
+    <string name="tweet_cancel_msj">¿Esta seguro que desea cancelar este tweet? El mensaje se borrará.</string>
+    <string name="tweet_cancel_titulo">Cancelar Tweet</string>
+</resources>

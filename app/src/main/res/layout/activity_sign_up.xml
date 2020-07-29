@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAzul"
+    tools:context=".ui.SingUpActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:contentDescription="Logo"
+        app:layout_constraintBottom_toTopOf="@+id/editTextUsername"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/ic_logo_minitwitter_white" />
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="@string/username_hint"
+        android:inputType="textEmailAddress"
+        android:autofillHints="userName"
+        app:layout_constraintBottom_toTopOf="@+id/editTextEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/e_mail_hint"
+        android:autofillHints="emailAddress"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUsername" />
+
+
+    <EditText
+        android:id="@+id/editTextPass"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/password_hint"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@android:color/white"
+        android:text="@string/crear_cuenta_text"
+        android:textColor="@color/colorAzul"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPass" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
