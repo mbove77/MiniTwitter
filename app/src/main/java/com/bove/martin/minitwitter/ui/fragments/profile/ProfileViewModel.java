@@ -1,19 +1,35 @@
 package com.bove.martin.minitwitter.ui.fragments.profile;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ProfileViewModel extends ViewModel {
+import com.bove.martin.minitwitter.repository.UserRepository;
+import com.bove.martin.minitwitter.retrofit.request.RequestUserProfile;
+import com.bove.martin.minitwitter.retrofit.response.ResponseUserProfile;
 
-    private MutableLiveData<String> mText;
+public class ProfileViewModel extends AndroidViewModel {
 
-    public ProfileViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is Profile fragment");
+    private UserRepository userRepository;
+    public LiveData<ResponseUserProfile> userProfile;
+    public LiveData<String> photoProfile;
+
+    public ProfileViewModel(@NonNull Application application) {
+        super(application);
+        userRepository = UserRepository.getInstance();
+        userProfile = userRepository.getUserProfile();
+        photoProfile = userRepository.getPhotoProfile();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public void updaeUserProfile(RequestUserProfile requestUserProfile) {
+        userRepository.updateProfile(requestUserProfile);
+    }
+
+    public void uploadPhoto(String photo) {
+        userRepository.uploadPhoto(photo);
     }
 }

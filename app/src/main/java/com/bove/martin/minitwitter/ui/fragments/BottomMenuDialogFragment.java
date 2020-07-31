@@ -11,14 +11,11 @@ import com.bove.martin.minitwitter.ui.fragments.tweets.TweetsViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.bove.martin.minitwitter.R;
 import com.google.android.material.navigation.NavigationView;
@@ -30,14 +27,14 @@ import com.google.android.material.navigation.NavigationView;
  *     TweetListDialogFragment.newInstance(30).show(getSupportFragmentManager(), "dialog");
  * </pre>
  */
-public class TweetListDialogFragment extends BottomSheetDialogFragment {
+public class BottomMenuDialogFragment extends BottomSheetDialogFragment {
 
     private TweetsViewModel tweetsViewModel;
     private int idTweet;
 
     // TODO: Customize parameters
-    public static TweetListDialogFragment newInstance(int idTweet) {
-        final TweetListDialogFragment fragment = new TweetListDialogFragment();
+    public static BottomMenuDialogFragment newInstance(int idTweet) {
+        final BottomMenuDialogFragment fragment = new BottomMenuDialogFragment();
         final Bundle args = new Bundle();
         args.putInt(Constantes.ARG_TWEET_ID, idTweet);
         fragment.setArguments(args);

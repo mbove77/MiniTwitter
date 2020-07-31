@@ -10,8 +10,7 @@ import androidx.lifecycle.LiveData;
 
 import com.bove.martin.minitwitter.model.Tweet;
 import com.bove.martin.minitwitter.repository.TweetRepository;
-import com.bove.martin.minitwitter.ui.fragments.TweetListDialogFragment;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.bove.martin.minitwitter.ui.fragments.BottomMenuDialogFragment;
 
 import java.util.List;
 
@@ -19,11 +18,13 @@ public class TweetsViewModel extends AndroidViewModel {
 
     private TweetRepository tweetRepository;
     private LiveData<List<Tweet>> tweets;
+    private LiveData<List<Tweet>> favTweets;
 
     public TweetsViewModel(@NonNull Application application) {
         super(application);
         tweetRepository = TweetRepository.getInstance();
         tweets = tweetRepository.getAllTweets();
+        favTweets = tweetRepository.getFavTweets();
     }
 
     public LiveData<List<Tweet>> getTweets() {
@@ -39,6 +40,15 @@ public class TweetsViewModel extends AndroidViewModel {
         tweetRepository.createTweet(mensaje);
     }
 
+    public LiveData<List<Tweet>> getFavTweets() {
+        return favTweets;
+    }
+
+    public LiveData<List<Tweet>> getNewFavTweets() {
+        favTweets = tweetRepository.getFavTweets();
+        return favTweets;
+    }
+
     public void likeTweet(int idTweet) {
         tweetRepository.likeTweet(idTweet);
     }
@@ -46,7 +56,7 @@ public class TweetsViewModel extends AndroidViewModel {
     public void deleteTweet(int idTweet) {tweetRepository.deleteTweet(idTweet); }
 
     public void openDialogTweetMenu(Context ctx, int idTweet) {
-        TweetListDialogFragment dialogTweet = TweetListDialogFragment.newInstance(idTweet);
+        BottomMenuDialogFragment dialogTweet = BottomMenuDialogFragment.newInstance(idTweet);
         dialogTweet.show(((AppCompatActivity)ctx).getSupportFragmentManager() , "openDialogTweetMenu");
     }
 }

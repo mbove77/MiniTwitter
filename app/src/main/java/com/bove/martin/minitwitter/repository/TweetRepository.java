@@ -63,6 +63,7 @@ public class TweetRepository {
             public void onResponse(Call<List<Tweet>> call, Response<List<Tweet>> response) {
                 if(response.isSuccessful()) {
                     allTweets.setValue(response.body());
+                    getFavTweets();
                 } else {
                     Toast.makeText(MyApp.getContext(), R.string.response_error, Toast.LENGTH_SHORT).show();
                 }
@@ -140,24 +141,28 @@ public class TweetRepository {
             favTweets = new MutableLiveData<>();
         }
 
-        List<Tweet> newFavTweets = new ArrayList<>();
-        Iterator itTweet = allTweets.getValue().iterator();
+        if(allTweets.getValue() == null) {
+            favTweets.setValue(new ArrayList<Tweet>());
+        } else {
+            List<Tweet> newFavTweets = new ArrayList<>();
+            Iterator itTweet = allTweets.getValue().iterator();
 
-        while (itTweet.hasNext()) {
-            Tweet currentTweet = (Tweet) itTweet.next();
-            Iterator itLikes = currentTweet.getLikes().iterator();
-            boolean userLike = false;
+            while (itTweet.hasNext()) {
+                Tweet currentTweet = (Tweet) itTweet.next();
+                Iterator itLikes = currentTweet.getLikes().iterator();
+                boolean userLike = false;
 
-            while (itLikes.hasNext() && !userLike) {
-                Like currentLike = (Like) itLikes.next();
-                if(currentLike.getUsername().equals(userName)) {
-                    userLike = true;
-                    newFavTweets.add(currentTweet);
+                while (itLikes.hasNext() && !userLike) {
+                    Like currentLike = (Like) itLikes.next();
+                    if (currentLike.getUsername().equals(userName)) {
+                        userLike = true;
+                        newFavTweets.add(currentTweet);
+                    }
                 }
             }
-        }
 
-        favTweets.setValue(newFavTweets);
+            favTweets.setValue(newFavTweets);
+        }
         return favTweets;
     }
 

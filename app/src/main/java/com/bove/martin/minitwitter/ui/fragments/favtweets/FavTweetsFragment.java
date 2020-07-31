@@ -14,16 +14,14 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 ;import com.bove.martin.minitwitter.R;
 import com.bove.martin.minitwitter.adapters.TweetsAdapater;
 import com.bove.martin.minitwitter.model.Tweet;
+import com.bove.martin.minitwitter.ui.fragments.tweets.TweetsViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-
-//TODO ver su se puede usar el TweetFragmentViewModel
 
 public class FavTweetsFragment extends Fragment implements TweetsAdapater.OnFavoriteClickListener, TweetsAdapater.OnMenuClickListener {
 
@@ -31,24 +29,23 @@ public class FavTweetsFragment extends Fragment implements TweetsAdapater.OnFavo
     private LinearLayoutManager linearLayoutManager;
     private TweetsAdapater favTweetsAdapater;
     private List<Tweet> favTweetList = new ArrayList<Tweet>();
-    private FavTweetsViewModel favTweetsViewModel;
+    private TweetsViewModel tweetsViewModel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        favTweetsViewModel = new ViewModelProvider(getActivity()).get(FavTweetsViewModel.class);
+        tweetsViewModel = new ViewModelProvider(getActivity()).get(TweetsViewModel.class);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_fav_tweets, container, false);
-
         setupRecyclerView(root);
         getAllFavTweets();
         return root;
     }
 
     private void getAllFavTweets() {
-        favTweetsViewModel.getFavTweets().observe(getActivity(), new Observer<List<Tweet>>() {
+        tweetsViewModel.getFavTweets().observe(getActivity(), new Observer<List<Tweet>>() {
             @Override
             public void onChanged(List<Tweet> tweets) {
                 favTweetList.clear();
@@ -57,7 +54,6 @@ public class FavTweetsFragment extends Fragment implements TweetsAdapater.OnFavo
             }
         });
     }
-
 
     private void setupRecyclerView(View view) {
         favTweetsAdapater = new TweetsAdapater(favTweetList, R.layout.tweet_item, getActivity(), this, this);
@@ -72,10 +68,11 @@ public class FavTweetsFragment extends Fragment implements TweetsAdapater.OnFavo
 
     @Override
     public void onFavItemClick(Tweet tweet, int posicion) {
-        favTweetsViewModel.likeTweet(tweet.getId());
+        tweetsViewModel.likeTweet(tweet.getId());
     }
 
     @Override
     public void onMenuItemClick(Tweet tweet, int posicion) {
+        tweetsViewModel.openDialogTweetMenu(getContext(), tweet.getId());
     }
 }

@@ -16,6 +16,7 @@ import com.bove.martin.minitwitter.common.SharedPreferecesManager;
 import com.bove.martin.minitwitter.model.Like;
 import com.bove.martin.minitwitter.model.Tweet;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
@@ -84,6 +85,13 @@ public class TweetsAdapater extends RecyclerView.Adapter<TweetsAdapater.ViewHold
             if(!tweet.getUser().getPhotoUrl().equals("")) {
                 Glide.with(activity)
                         .load(Constantes.API_PHOT_URL + tweet.getUser().getPhotoUrl())
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .skipMemoryCache(true)
+                        .centerCrop()
+                        .into(this.imageViewAvatar);
+            } else {
+                Glide.with(activity)
+                        .load(R.drawable.ic_account_blue)
                         .into(this.imageViewAvatar);
             }
 
