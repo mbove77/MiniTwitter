@@ -7,7 +7,7 @@ package com.bove.martin.minitwitter.common;
 public class Constantes {
     public static final String API_BASE_URL = "https://www.minitwitter.com:3001/apiv1/";
     public static final String API_PHOT_URL = "https://www.minitwitter.com/apiv1/uploads/photos/";
-    public static final String API_CODE = "UDEMYANDROID";
+    public static final String API_CODE = "";
     public static final String SHARED_PREFERENCES_NAME = "APP_SETTINGS";
 
     // Preferences Names
