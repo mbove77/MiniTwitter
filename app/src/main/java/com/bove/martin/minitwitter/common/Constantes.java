@@ -20,4 +20,5 @@ public class Constantes {
 
     public static final String ARG_TWEET_ID = "ARG_TWEET_id";
     public static final int SELECT_PHOTO_GALERY = 1;
+
 }
