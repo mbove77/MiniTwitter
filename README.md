@@ -3,7 +3,5 @@
 
 ### Capturas de pantalla
 ![App Preview](https://github.com/mbove77/MiniTwitter/blob/master/App-images/screen1.jpg?raw=true)
-
 ![App Preview](https://github.com/mbove77/MiniTwitter/blob/master/App-images/screen2.jpg?raw=true)
-
 ![App Preview](https://github.com/mbove77/MiniTwitter/blob/master/App-images/profile.jpg?raw=true)
